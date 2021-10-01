@@ -32,6 +32,8 @@ def get_guess():
         event = pygame.event.poll()
 
         if event.type == pygame.QUIT:
+            os.system("mpg123 " + GAME_PATH + "/sounds/escape.mp3")
+            time.sleep(10)
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
@@ -79,6 +81,51 @@ class GameRound:
             pygame.K_7: "7.mp3",
             pygame.K_8: "8.mp3",
             pygame.K_9: "9.mp3",
+            pygame.K_BACKSPACE: "backspace.mp3",
+            pygame.K_TAB: "tab.mp3",
+            pygame.K_RETURN: "return.mp3",
+            pygame.K_SPACE: "space.mp3",
+            pygame.K_CAPSLOCK: "capslock.mp3",
+            pygame.K_LSHIFT: "left_shift.mp3",
+            pygame.K_RSHIFT: "right_shift.mp3",
+            pygame.K_LCTRL: "left_control.mp3",
+            pygame.K_RCTRL: "right_control.mp3",
+            pygame.K_RALT: "right_alt.mp3",
+            pygame.K_LALT: "left_alt.mp3",
+            pygame.K_BACKQUOTE: "grave.mp3",
+            pygame.K_BACKSLASH: "backslash.mp3",
+            pygame.K_SLASH: "forward_slash.mp3",
+            pygame.K_COMMA: "comma.mp3",
+            pygame.K_PERIOD: "period.mp3",
+            pygame.K_DELETE: "delete.mp3",
+            pygame.K_UP: "up_arrow.mp3",
+            pygame.K_DOWN: "down_arrow.mp3",
+            pygame.K_RIGHT: "right_arrow.mp3",
+            pygame.K_LEFT: "left_arrow.mp3",
+            pygame.K_HOME: "home.mp3",
+            pygame.K_PAGEUP: "page_up.mp3",
+            pygame.K_PAGEDOWN: "page_down.mp3",
+            pygame.K_END: "end.mp3",
+            pygame.K_F1: "F1.mp3",
+            pygame.K_F2: "F2.mp3",
+            pygame.K_F3: "F3.mp3",
+            pygame.K_F4: "F4.mp3",
+            pygame.K_F5: "F5.mp3",
+            pygame.K_F6: "F6.mp3",
+            pygame.K_F7: "F7.mp3",
+            pygame.K_F8: "F8.mp3",
+            pygame.K_F9: "F9.mp3",
+            pygame.K_F10: "F10.mp3",
+            pygame.K_F11: "F11.mp3",
+            pygame.K_F12: "F12.mp3",
+            pygame.K_SEMICOLON: "semicolon.mp3",
+            pygame.K_MINUS: "minus.mp3",
+            pygame.K_EQUALS: "equalS.mp3",
+            pygame.K_LEFTBRACKET: "left_bracket.mp3",
+            pygame.K_RIGHTBRACKET: "right_bracket.mp3",
+            pygame.K_LSUPER: "left_windows_key.mp3",
+            pygame.K_RSUPER: "right_windows_key.mp3",
+            pygame.K_PRINT: "print_screen.mp3"
         }
         self.search_key_index = random.randint(0, 35)
 
