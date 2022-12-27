@@ -13,16 +13,28 @@ def draw_robot():
     screen.blit(robot, (robotX, robotY))
     pygame.display.update()
 
+if len(sys.argv) < 2:
+    name = 'moni'
+else:
+    name = sys.argv[1]
+
+if len(sys.argv) < 3:
+    number_of_rounds = 3
+else:
+    number_of_rounds = sys.argv[2]
+
+print("name: " + name)
 
 pygame.init()
 screen = pygame.display.set_mode((1800, 1202), pygame.RESIZABLE)
-GAME_PATH = path.Path(__file__).parent
+GAME_PATH = os.path.dirname(os.path.abspath(__file__))
 screen.fill((0, 0, 130))
 draw_robot()
 pygame.display.update()
 
-
-os.system("mpg123 " + GAME_PATH + "/sounds/greeting.mp3")
+#TODO: change to add option for name input
+os.system("mpg123 " + GAME_PATH + "/sounds/hello.mp3")
+os.system("mpg123 " + GAME_PATH + "/sounds/" + name + ".mp3")
 
 
 def get_guess():
@@ -44,7 +56,6 @@ def get_guess():
 
 class GameRound:
     def __init__(self):
-        # TODO: Add non character buttons to say what Moni hit
         self.key_sounds = {
             pygame.K_a: "a.mp3",
             pygame.K_b: "b.mp3",
@@ -130,7 +141,7 @@ class GameRound:
         self.search_key_index = random.randint(0, 35)
 
         self.search_key = list(self.key_sounds.keys())[self.search_key_index ]
-
+        print("mpg123 " + GAME_PATH + "/sounds/can_you_find_letter.mp3")
         if self.search_key_index < 26:
             os.system("mpg123 " + GAME_PATH + "/sounds/can_you_find_letter.mp3")
         else:
@@ -148,7 +159,8 @@ class GameRound:
             guess_key = get_guess()
 
             if guess_key == self.search_key:
-                os.system("mpg123 " + GAME_PATH + "/sounds/correct_guess.mp3")
+                os.system("mpg123 " + GAME_PATH + "/sounds/awesome_" + name + ".mp3")
+                os.system("mpg123 " + GAME_PATH + "/sounds/you_found_it.mp3")
                 stop = True
             else:
                 os.system("mpg123 " + GAME_PATH + "/sounds/incorrect_guess.mp3")
@@ -158,7 +170,7 @@ class GameRound:
 
 
 def main_game():
-    for x in range(3):
+    for x in range(int(number_of_rounds)):
         game_round = GameRound()
         game_round.listen()
 
