@@ -13,6 +13,7 @@ def draw_robot():
     screen.blit(robot, (robotX, robotY))
     pygame.display.update()
 
+
 if len(sys.argv) < 2:
     name = 'moni'
 else:
